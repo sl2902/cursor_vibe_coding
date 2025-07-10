@@ -1,0 +1,47 @@
+Project Goal
+Build a chatbot using OpenAI models, with document retrieval powered by Milvus as the vector database.
+
+Requirements
+Vector Storage
+
+Use the Milvus client to:
+
+Connect to a local or remote Milvus instance.
+
+Create a collection to store embedded documents.
+
+Choose an appropriate embedding model (e.g., text-embedding-3-small from OpenAI) to convert documents into vectors.
+
+Backend API
+
+Use FastAPI to build a lightweight web server.
+
+The index.py file should:
+
+Accept requests from a frontend (e.g., user messages).
+
+Perform embedding, search Milvus for relevant context, and send the context + user query to OpenAI's chat API.
+
+Return the assistant’s response.
+
+Frontend Support
+
+Include HTML to support the app
+
+Include clear API routes in FastAPI for:
+
+POST /chat – Accepts a user message.
+
+GET /health – Optional: for health check/debugging.
+
+Frontend should be able to call these endpoints.
+
+Notes
+Include error handling for failed API or Milvus calls.
+
+You can use in-memory document ingestion to start (no need for a full ingestion pipeline yet).
+
+Add .env support for OPENAI_API_KEY, MILVUS_HOST, etc. All credentials should be in the .env file
+
+Some challenges faced around missing dependencies, connection to Milvus, and the openai_api_key not being picked up as
+it was reading the placeholder. Ultimately I resolved it by running `source .env`
