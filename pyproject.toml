@@ -1,0 +1,62 @@
+[project]
+name = "fastapi-chatbot"
+version = "0.1.0"
+description = "FastAPI Chatbot with Milvus and OpenAI"
+authors = [
+    {name = "AI Engineering Bootcamp", email = "bootcamp@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+license = {text = "MIT"}
+keywords = ["fastapi", "chatbot", "openai", "milvus", "rag"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.dependencies]
+fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0"}
+pydantic = "^2.5.0"
+pydantic-settings = "^2.1.0"
+openai = "^1.3.7"
+pymilvus = "^2.3.4"
+python-dotenv = "^1.0.0"
+httpx = "^0.25.2"
+python-multipart = "^0.0.6"
+marshmallow = "^3.20.1"
+setuptools = "*"
+
+[project.optional-dependencies]
+dev = [
+    "pytest = "^7.4.0",
+    "pytest-asyncio = "^0.21.0",
+    "black = "^23.0.0",
+    "isort = "^5.12.0",
+    "flake8 = "^6.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short" 
